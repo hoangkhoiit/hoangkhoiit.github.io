@@ -13,6 +13,7 @@ export default defineConfig({
       target: 'es2020',
     },
   },
+  base: '/hoangkhoiit.github.io/',
   plugins: [
     react({
       babel: {
@@ -30,6 +31,7 @@ export default defineConfig({
         ],
       },
     }),
+
     Icons({
       compiler: 'jsx',
       jsx: 'react',

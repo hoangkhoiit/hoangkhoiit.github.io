@@ -14,7 +14,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://github.com/hoangkhoiit/hoangkhoiit.github.io#readme",
+  "homepage": "https://hoangkhoiit.github.io/hoangkhoiit.github.io/",
   "author": "hoangkhoiit <hoangkhoiit@gmail.com>",
   "license": "MIT",
   "dependencies": {

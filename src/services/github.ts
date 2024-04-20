@@ -142,9 +142,9 @@ function hasBody(method: string) {
 }
 
 class Github {
-  private apiBase = 'https://api.github.com';
+  private apiBase = 'https://hoangkhoiit.khoihoang.workers.dev';
 
-  constructor(private token: string, private owner: string, private repo: string) {}
+  constructor(private owner: string, private repo: string) {}
 
   private async request(method: string, url: string, data?: Record<string, unknown>) {
     let query = '';
@@ -160,7 +160,6 @@ class Github {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
         Accept: 'application/vnd.github.v3+json',
-        Authorization: `token ${this.token}`,
       },
       body: body ? JSON.stringify(body) : undefined,
     });
@@ -172,7 +171,7 @@ class Github {
     const { state, sort, direction, page, pageSize } = options;
     const query = { state, sort, direction, page, per_page: pageSize };
 
-    return this.request('GET', `/repos/${this.owner}/${this.repo}/milestones`, query);
+    return this.request('GET', '/milestones', query);
   }
 
   public async listIssues(options: ListIssuesOptions): Promise<Issue[]> {
@@ -189,18 +188,18 @@ class Github {
       creator: this.owner,
     };
 
-    return this.request('GET', `/repos/${this.owner}/${this.repo}/issues`, query);
+    return this.request('GET', `/issues`, query);
   }
 
   public getIssue(issue: number): Promise<Issue> {
-    return this.request('GET', `/repos/${this.owner}/${this.repo}/issues/${issue}`);
+    return this.request('GET', `/issues/${issue}`);
   }
 
   public listComments(options: ListCommentsOptions): Promise<Comment[]> {
     const { issue, sort, direction, page, pageSize } = options;
     const query = { sort, direction, page, per_page: pageSize };
 
-    return this.request('GET', `/repos/${this.owner}/${this.repo}/issues/${issue}/comments`, query);
+    return this.request('GET', `/issues/${issue}/comments`, query);
   }
 
   public listRepositories(options: ListRepositoriesOptions): Promise<Repository[]> {
@@ -210,8 +209,4 @@ class Github {
   }
 }
 
-export default new Github(
-  import.meta.env.VITE_GITHUB_ACCESS_TOKEN_PART1 + import.meta.env.VITE_GITHUB_ACCESS_TOKEN_PART2,
-  import.meta.env.VITE_GITHUB_OWNER,
-  import.meta.env.VITE_GITHUB_REPO,
-);
+export default new Github(import.meta.env.VITE_GITHUB_OWNER, import.meta.env.VITE_GITHUB_REPO);

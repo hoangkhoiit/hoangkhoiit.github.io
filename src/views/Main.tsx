@@ -80,7 +80,7 @@ export default function Main() {
   }, [darkModeEnabled]);
 
   const onToggleLanguage = useCallback(() => {
-    changeLanguage(i18n.language === 'cn' ? 'en' : 'cn');
+    changeLanguage(i18n.language === 'vi' ? 'en' : 'vi');
     localStorage.setItem('language', i18n.language);
   }, []);
 
@@ -133,7 +133,7 @@ export default function Main() {
             <a tw="hover:text-blue-500" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
               CC BY-NC-SA 4.0
             </a>
-            <span tw="ml-2">2016-present © varHarrie</span>
+            <span tw="ml-2">2024-present © hoangkhoiit</span>
           </FooterCenter>
         </Footer>
       </Wrapper>

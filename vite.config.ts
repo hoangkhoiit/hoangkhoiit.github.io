@@ -13,7 +13,7 @@ export default defineConfig({
       target: 'es2020',
     },
   },
-  base: '/hoangkhoiit.github.io/',
+  base: '/',
   plugins: [
     react({
       babel: {
